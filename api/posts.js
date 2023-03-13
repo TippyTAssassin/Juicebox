@@ -9,11 +9,17 @@ postsRouter.use((req, res, next) =>{
 });
 
 postsRouter.get('/', async (req, res) => {
-    const posts = await getAllPosts();
+    try {
+        const posts = await getAllPosts();
 
-    res.send({
-        posts
-    });
+        res.send({
+            posts
+        });
+    } catch (error) {
+        throw error;
+    }
+  
+    
 });
 
 module.exports = postsRouter;

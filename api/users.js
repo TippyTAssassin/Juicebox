@@ -11,12 +11,16 @@ usersRouter.use((req, res, next) => {
 });
 
 usersRouter.get('/', async (req, res) => {
-    const users = await getAllUsers();
+    try {
+      const users = await getAllUsers();
 
-    res.send({
-        
-        users
-    });
+      res.send({
+          
+          users
+      });
+    } catch (error) {
+      throw error;
+    }
 });
 
 usersRouter.post('/login', async (req, res, next) => {
